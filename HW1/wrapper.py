@@ -35,6 +35,7 @@ def main() -> None:
     img1_shift = None
     img2_shift = None
 
+    # TODO: Replace None with correct calls. The difference should be between the original and shifted image
     img1_diff = None
     img2_diff = None
 
