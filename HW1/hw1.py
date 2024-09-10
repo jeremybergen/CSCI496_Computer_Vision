@@ -133,7 +133,3 @@ def blur_image(img: np.ndarray, ksize: int) -> np.ndarray:
     :return: Image array with blurred image
     """
     raise NotImplementedError
-
-
-if __name__ == "__main__":
-    pass
