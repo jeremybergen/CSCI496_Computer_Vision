@@ -16,6 +16,16 @@ If you're looking at the pixel values from the numpy array, remember that the x 
 A typical process would be to convert the image to HSV, identify the pixels that contain the sign in question,
 create a low and high bounds for the color in HSV, then use the inRange on the HSV image to get the mask.
 Then do the normal edge detection, HoughLinesP/HoughCircles.
+
+Useful functions:
+    GaussianBlur
+    cvtColor
+    inRange
+    bitwise_and
+    Canny
+    HoughLinesP
+    HoughCircles (this one you don't run canny before)
+    np.arctan   This is to figure out the angle of lines for the difference between stop and yield
 """
 
 
@@ -46,11 +56,17 @@ def part1() -> None:
 
 
 def part2() -> None:
+    # sign_images = ['images/construction.jpg', 'images/regulatory.jpg', 'images/regulatory_yield.jpg',
+    #                'images/rr_crossing.jpg', 'images/services.jpg', 'images/warning.jpg']
+    #
+    # file_name = ['construction_txt.jpg', 'regulatory_txt.jpg', 'regulatory_yield_txt.jpg',
+    #              'rr_crossing_txt.jpg', 'services_txt.jpg', 'warning_txt.jpg']
+
     sign_images = ['images/construction.jpg', 'images/regulatory.jpg', 'images/regulatory_yield.jpg',
-                   'images/rr_crossing.jpg', 'images/services.jpg', 'images/warning.jpg']
+                   'images/rr_crossing.jpg']
 
     file_name = ['construction_txt.jpg', 'regulatory_txt.jpg', 'regulatory_yield_txt.jpg',
-                 'rr_crossing_txt.jpg', 'services_txt.jpg', 'warning_txt.jpg']
+                 'rr_crossing_txt.jpg']
 
     sign_functions = [identify_construction, identify_stop_sign, identify_yield,
                       identify_rr_crossing, identify_services, identify_warning]
@@ -64,15 +80,9 @@ def part2() -> None:
 
 
 def part3() -> None:
-    sign_images = ['images/all_signs_blank_background.jpg', 'images/all_signs.jpg',
-                   'images/construction_warning_rr_crossing_background.jpg', 'images/construction_warning_rr_crossing_background02.jpg',
-                   'images/stop_sign_background.jpg', 'images/stop_sign_background02.jpg', 'images/stop_yield_background.jpg',
-                   'images/stop_yield_background02.jpg']
+    sign_images = ['images/all_signs_blank_background.jpg', 'images/all_signs.jpg']
 
-    file_name = ['all_signs_blank_background_txt.jpg', 'all_signs_txt.jpg',
-                 'construction_warning_rr_crossing_background_txt.jpg', 'construction_warning_rr_crossing_background02_txt.jpg',
-                 'stop_sign_background_txt.jpg', 'stop_sign_background02_txt.jpg', 'stop_yield_background_txt.jpg',
-                 'stop_yield_background02_txt.jpg']
+    file_name = ['all_signs_blank_background_txt.jpg', 'all_signs_txt.jpg']
 
     for img_in, file_out in zip(sign_images, file_name):
         img = cv2.imread(img_in)
